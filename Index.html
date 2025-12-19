@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anuja Manoj Lakde | Digital Profile</title>
+  <meta name="description" content="ATS-friendly digital profile for LIS Customer Services Assistant applications." />
+  <style>
+    :root{
+      /* University of Chester–style palette (approx.) */
+      --uoc-green:#0b4f3a;
+      --uoc-green-2:#0f6a4d;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --bg:#f4f7f6;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --chip:#eef6f2;
+      --shadow:0 10px 25px rgba(2, 8, 23, .08);
+      --radius:16px;
+      --maxw:980px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:linear-gradient(180deg, #eef4f1 0%, var(--bg) 40%, #ffffff 100%);
+    }
+    a{color:var(--uoc-green-2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:28px 18px 60px}
+    .topbar{
+      background:linear-gradient(90deg, var(--uoc-green) 0%, var(--uoc-green-2) 100%);
+      color:#fff;
+      border-radius:var(--radius);
+      padding:22px 22px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .topbar:before{
+      content:"";
+      position:absolute;
+      inset:-80px -120px auto auto;
+      width:280px; height:280px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      transform:rotate(15deg);
+      filter:blur(0.5px);
+    }
+    .row{display:flex; gap:18px; flex-wrap:wrap; align-items:flex-start}
+    .name{
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:.2px;
+      margin:0 0 6px 0;
+    }
+    .role{
+      margin:0;
+      opacity:.95;
+      font-weight:600;
+    }
+    .meta{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      font-size:14px;
+      opacity:.95;
+    }
+    .meta span{display:inline-flex; gap:8px; align-items:center}
+    .btns{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(255,255,255,.25);
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:transform .06s ease, background .15s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,.18); text-decoration:none}
+    .btn:active{transform:translateY(1px)}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    @media (max-width: 920px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 8px 18px rgba(2,8,23,.05);
+      padding:18px 18px;
+    }
+    .card h2{
+      font-size:16px;
+      margin:0 0 12px 0;
+      letter-spacing:.2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .kicker{
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      margin:0 0 8px 0;
+    }
+    .p{margin:0; color:#111827; line-height:1.55}
+    .muted{color:var(--muted)}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .chip{
+      background:var(--chip);
+      border:1px solid #d8ebe1;
+      color:var(--uoc-green);
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:12.5px;
+      white-space:nowrap;
+    }
+    .section{margin-top:14px}
+    .item{
+      padding:12px 0;
+      border-top:1px dashed #e6ece9;
+    }
+    .item:first-child{border-top:0; padding-top:0}
+    .titleline{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:baseline;
+    }
+    .job{font-weight:800}
+    .org{font-weight:700; color:var(--uoc-green)}
+    .dates{font-size:13px; color:var(--muted); font-family:var(--mono)}
+    ul{margin:8px 0 0 18px; padding:0}
+    li{margin:6px 0; color:#0f172a; line-height:1.45}
+    .small{font-size:13px}
+    .tag{
+      display:inline-flex; align-items:center;
+      font-size:12px;
+      border:1px solid #e2e8f0;
+      border-radius:999px;
+      padding:5px 9px;
+      margin-left:8px;
+      color:#0f172a;
+      background:#f8fafc;
+      white-space:nowrap;
+    }
+    .footer{
+      margin-top:18px;
+      font-size:12.5px;
+      color:var(--muted);
+      text-align:center;
+    }
+    .print-note{
+      font-size:12px;
+      color:rgba(255,255,255,.9);
+      margin-top:6px;
+    }
+    @media print{
+      body{background:#fff}
+      .wrap{padding:0}
+      .btns{display:none}
+      .card{box-shadow:none}
+      a{text-decoration:none; color:inherit}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap" id="top">
+    <header class="topbar">
+      <div class="row">
+        <div style="flex:1 1 520px">
+          <h1 class="name">Anuja Manoj Lakde</h1>
+          <p class="role">LIS Customer Services Assistant • Customer Service • Helpdesk / Ticketing Support</p>
+          <div class="meta">
+            <span>📍 Liverpool / Chester, UK</span>
+            <span>📞 <a href="tel:+447776794911" style="color:#fff">+44 7776 794911</a></span>
+            <span>✉️ <a href="mailto:anuja.lakde9@gmail.com" style="color:#fff">anuja.lakde9@gmail.com</a></span>
+            <span>🔗 <a href="https://www.linkedin.com/in/anujalakde" target="_blank" rel="noreferrer" style="color:#fff">linkedin.com/in/anujalakde</a></span>
+          </div>
+          <div class="btns">
+            <a class="btn" href="#experience">📌 Experience</a>
+            <a class="btn" href="#skills">✅ Skills</a>
+            <a class="btn" href="#education">🎓 Education</a>
+            <button class="btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+          </div>
+          <div class="print-note">Tip: use “Print / Save PDF” to create a clean PDF version.</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="grid" style="margin-top:18px">
+      <section class="card">
+        <div class="kicker">Profile</div>
+        <p class="p">
+          Customer-focused and reliable service professional with experience acting as a
+          <strong>first point of contact</strong> across retail, administrative, and IT-support environments.
+          Skilled in handling enquiries, complaints/returns, and managing <strong>helpdesk tickets</strong>.
+          Confident supporting users with routine IT, equipment, and digital system issues
+          (PCs, printers, tills, logins, Microsoft 365/Teams). Completed an
+          <strong>MSc Data Science at the University of Chester</strong>, bringing strong attention to detail,
+          accurate record keeping, and calm professional communication aligned with LIS Customer Services.
+        </p>
+
+        <div class="section" id="skills">
+          <h2>✅ Key Skills</h2>
+          <div class="chips">
+            <span class="chip">Customer Service & Front Desk</span>
+            <span class="chip">Helpdesk & Ticketing (CRM)</span>
+            <span class="chip">Complaint Handling</span>
+            <span class="chip">Written & Verbal Communication</span>
+            <span class="chip">Prioritising Multiple Requests</span>
+            <span class="chip">Incident Identification & Escalation</span>
+            <span class="chip">PCs, Printers, Tills, Logins</span>
+            <span class="chip">Microsoft 365 & Teams</span>
+            <span class="chip">Accurate Records & Audits</span>
+            <span class="chip">Teamwork & Handover</span>
+            <span class="chip">Data Protection & Confidentiality</span>
+            <span class="chip">Flexible Working</span>
+          </div>
+        </div>
+
+        <div class="section" id="experience">
+          <h2>📌 Relevant Experience</h2>
+
+          <div class="item">
+            <div class="titleline">
+              <div>
+                <span class="job">Customer Service Assistant (Checkout & Service Desk)</span>
+                <span class="tag">First point of contact</span><br />
+                <span class="org">ASDA, UK</span>
+              </div>
+              <div class="dates">Month/Year – Present</div>
+            </div>
+            <ul>
+              <li>Welcomed customers and provided professional support at tills/service points, resolving routine enquiries quickly and calmly.</li>
+              <li>Enforced age-restricted sales policies (e.g., vapes) with tact: requested ID, explained refusals clearly, and maintained positive interactions.</li>
+              <li>Processed transactions accurately and followed procedures for cash handling, refunds, and service standards.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="titleline">
+              <div>
+                <span class="job">Service Assistant (Customer Complaints & Returns)</span>
+                <span class="tag">Complaints & returns</span><br />
+                <span class="org">Sainsbury’s, UK</span>
+              </div>
+              <div class="dates">Nov 2024 – Feb 2025</div>
+            </div>
+            <ul>
+              <li>Handled complaints, returns, promotions, online order queries, and floor enquiries with tact, aiming for first-contact resolution.</li>
+              <li>Managed multiple customer requests during peak trading (including Christmas), adapting quickly to changing priorities.</li>
+              <li>Followed strict procedures for refunds, markdowns, and wastage; kept accurate records important for audits and revenue control.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="titleline">
+              <div>
+                <span class="job">Warehouse Administrator (Customer Calls, Orders & Payments)</span>
+                <span class="tag">Email + phone support</span><br />
+                <span class="org">Pop Specs</span>
+              </div>
+              <div class="dates">Month/Year – Month/Year</div>
+            </div>
+            <ul>
+              <li>Solely handled inbound customer calls and emails, responding to order queries and providing clear service updates.</li>
+              <li>Checked payments, tracked orders, and liaised with internal teams to resolve complaints and fulfil requests on time.</li>
+              <li>Drafted professional customer emails and maintained accurate order/customer records.</li>
+              <li>Updated website product listings via imports and managed items in <strong>WooCommerce</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="titleline">
+              <div>
+                <span class="job">IT / Data Support (Helpdesk & Ticketing Systems)</span>
+                <span class="tag">Ticketing / CRM</span><br />
+                <span class="org">Namasys Private Limited</span>
+              </div>
+              <div class="dates">Sep 2023 – Sep 2024</div>
+            </div>
+            <ul>
+              <li>Logged and managed tickets for customer dashboard access, Power BI issues, and other system problems using an internal CRM/ticketing system.</li>
+              <li>Provided first-line support for access/login/usability issues; resolved routine cases and escalated complex issues to specialist teams.</li>
+              <li>Recorded issue details and resolution notes accurately, following procedures and data protection requirements.</li>
+              <li>Coordinated timely handovers with testing and delivery teams to meet project deadlines.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="titleline">
+              <div>
+                <span class="job">Dashboard Support & Digital Skills Training</span>
+                <span class="tag">User support</span><br />
+                <span class="org">National Stock Exchange IT (NSEIT)</span>
+              </div>
+              <div class="dates">Feb 2022 – Jun 2022</div>
+            </div>
+            <ul>
+              <li>Supported colleagues with queries related to HR analytics dashboards, explaining outputs clearly to non-technical users.</li>
+              <li>Trained staff on dashboard use and supported Microsoft Teams and Microsoft 365 logins and usage.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="kicker">Education</div>
+        <section id="education">
+          <h2>🎓 Education</h2>
+
+          <div class="item">
+            <div class="titleline">
+              <div><span class="job">MSc Data Science</span><br><span class="org">University of Chester</span></div>
+              <div class="dates">Completed 2025</div>
+            </div>
+            <ul class="small">
+              <li>Active user of university library services, e-resources, and study spaces; experienced in group work and peer learning.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="titleline">
+              <div><span class="job">Bachelor of Computer Applications</span><br><span class="org">S.P.N. Doshi Women’s College</span></div>
+              <div class="dates">2017 – 2020</div>
+            </div>
+            <ul class="small">
+              <li>Student Admissions Volunteer: assisted applicants with online forms, answered queries, and guided students through systems.</li>
+              <li>Conducted campus tours demonstrating library services and study spaces.</li>
+              <li>Managed a departmental student group and shared daily newsletters/important academic information.</li>
+            </ul>
+          </div>
+        </section>
+
+        <div class="section">
+          <h2>ℹ️ Additional</h2>
+          <ul class="small">
+            <li>Strong understanding of confidentiality, data protection, and IT security.</li>
+            <li>Flexible and reliable; willing to support additional hours as service needs require.</li>
+            <li>Eligible to work in the UK.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>📄 Notes</h2>
+          <p class="muted small" style="margin:0">
+            Replace placeholders: <strong>ASDA dates</strong> and <strong>Pop Specs dates</strong>.
+            Keep this page as a simple, ATS-friendly “digital CV” and print to PDF for applications.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> Anuja Manoj Lakde • Digital Profile (ATS-friendly)
+    </div>
+  </main>
+
+  <script>
+    // Set footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", e => {
+        const id = a.getAttribute("href");
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
